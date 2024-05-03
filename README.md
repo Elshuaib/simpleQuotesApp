@@ -1,6 +1,6 @@
 # quotes
 
-A new Flutter project.
+A simple flutter Quotes App.
 
 ## Getting Started
 
