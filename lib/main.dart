@@ -7,7 +7,6 @@ void main() => runApp(MaterialApp(
 ));
 
 class QuoteList extends StatefulWidget {
-  const QuoteList({Key? key}) : super(key: key);
 
   @override
   State<QuoteList> createState() => _QuoteListState();
@@ -23,22 +22,30 @@ class _QuoteListState extends State<QuoteList> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[200],
-      appBar: AppBar(
-        title: Text('Awesome Quotes'),
-        centerTitle: true,
-        backgroundColor: Colors.redAccent,
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/quote-bg.jpg'),
+          fit: BoxFit.cover,
+        ),
       ),
-      body: Column(
-        children: quotes.map((quote) => QuoteCard(
-          quote: quote,
-          delete: (){
-            setState(() {
-              quotes.remove(quote);
-            });
-          }
-        )).toList(),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          title: Text('Awesome Quotes App', style: TextStyle(color: Colors.amber),),
+          centerTitle: true,
+          backgroundColor: Colors.grey[150],
+        ),
+        body: Column(
+          children: quotes.map((quote) => QuoteCard(
+            quote: quote,
+            delete: (){
+              setState(() {
+                quotes.remove(quote);
+              });
+            }
+          )).toList(),
+        ),
       ),
     );
   }
